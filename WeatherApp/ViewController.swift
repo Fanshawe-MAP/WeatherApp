@@ -12,17 +12,15 @@ var searchedCityName: String?
 var temp: Double = 0.0
 var cityTemp: String = "London"
 var networkModel = NetworkModel()
+var tempC: String?
+var tempF: String?
+var city: String? = nil
 
 class ViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let locationDelegate = MyLocationDelegate()
 
-    
-    
-    
-    
-    
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     
@@ -51,20 +49,28 @@ class ViewController: UIViewController {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = locationDelegate
         locationManager.requestWhenInUseAuthorization()
         // Do any additional setup after loading the view.
-            fetchWeatherData(for: "London,On")
+        fetchWeatherData(for: city ?? "London,On")
            
     }
     
     
     @IBAction func currentLocation(_ sender: UIButton) {
         locationManager.requestLocation()
+    }
+    
+    
+    @IBAction func tempFahrenheit(_ sender: UIButton) {
+        temperatureLabel.text = tempF
+    }
+    
+    @IBAction func tempCelsius(_ sender: UIButton) {
+        temperatureLabel.text = tempC
     }
     
     func fetchWeatherData(for city: String) {
@@ -76,13 +82,12 @@ class ViewController: UIViewController {
     }
     
     private func updateUI(with weatherData: Weather) {
-        temp = (weatherData.current.tempCelsius)
-        cityTemp = (weatherData.location.cityName)
         cityNameLabel.text = "\(weatherData.location.cityName)"
         temperatureLabel.text = "\(weatherData.current.tempCelsius) °C"
-        let tempFar = "\(weatherData.current.tempFahrenheit) °F"
+        
+        tempF = "\(weatherData.current.tempFahrenheit)"
+        tempC = "\(weatherData.current.tempCelsius)"
         print(weatherData.current.condition.code)
-        print(tempFar)
         
         switch (weatherData.current.condition.code){
             
@@ -160,14 +165,22 @@ class ViewController: UIViewController {
 }
 
 
-
-
 class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Got location")
         if let location = locations.last {
             print("Latitude: \(location.coordinate.latitude)")
             print("Longitude: \(location.coordinate.longitude)")
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location) { placemarks, error in
+                if let error = error {
+                    print(error)
+                }
+                if let placemark = placemarks?.first {
+                    city = placemark.locality!
+                    print("City: \(city ?? "London,On")")
+                }
+            }
         }
     }
     
@@ -175,4 +188,3 @@ class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
         print(error)
     }
 }
-
