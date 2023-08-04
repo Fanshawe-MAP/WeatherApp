@@ -8,20 +8,25 @@
 import UIKit
 import CoreLocation
 
+var searchedCityName: String?
+
 class ViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let locationDelegate = MyLocationDelegate()
 
-
+    
+    
+    private var networkModel = NetworkModel()
+    
+    
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     
     @IBOutlet weak var searchField: UITextField!
-    
-    @IBOutlet weak var searchBtn: UIImageView!
     @IBOutlet weak var weatherConditionLabel: UILabel!
     
+   
     @IBOutlet weak var cityListBtn: UIButton!
     
     @IBAction func cityBtn(_ sender: UIButton) {
@@ -30,8 +35,19 @@ class ViewController: UIViewController {
         
     }
     
-    private var searchedCityName: String?
-    private var networkModel = NetworkModel()
+    @IBAction func searchCityBtn(_ sender: Any) {
+        searchedCityName = searchField.text
+        
+        if let searchedCityName = searchedCityName{
+            print(searchedCityName)
+            fetchWeatherData(for: searchedCityName)
+            searchField.text = ""
+            loadData()
+        }
+        
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +55,8 @@ class ViewController: UIViewController {
         locationManager.delegate = locationDelegate
         locationManager.requestWhenInUseAuthorization()
         // Do any additional setup after loading the view.
-        fetchWeatherData(for: "London,On")
-        
-        searchedCityName = searchField.text
-        print(searchedCityName!)
+            fetchWeatherData(for: "London,On")
+           
     }
     
     

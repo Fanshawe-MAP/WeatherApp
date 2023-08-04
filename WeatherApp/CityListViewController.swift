@@ -7,27 +7,25 @@
 
 import UIKit
 
+var items:[String] = []
+
 class CityListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var cityListView: UITableView!
-    var items:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let item = "London"
-        self.items.append(item)
-        loadData()
+      //  self.items.append(item)
+        //loadData()
         
         cityListView.delegate = self
         cityListView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
-    func loadData(){
-        items.append("Toronto")
-        items.append("Vancouver")
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -45,4 +43,11 @@ class CityListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 
+}
+
+func loadData(){
+    
+    if let searchedCityName = searchedCityName{
+        items.append(searchedCityName)
+    }
 }
