@@ -9,6 +9,9 @@ import UIKit
 import CoreLocation
 
 var searchedCityName: String?
+var temp: Double = 0.0
+var cityTemp: String = "London"
+var networkModel = NetworkModel()
 
 class ViewController: UIViewController {
     
@@ -17,7 +20,7 @@ class ViewController: UIViewController {
 
     
     
-    private var networkModel = NetworkModel()
+    
     
     
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
         locationManager.requestLocation()
     }
     
-    private func fetchWeatherData(for city: String) {
+    func fetchWeatherData(for city: String) {
         networkModel.searchWeather(for: city) { [weak self] weatherData in
             DispatchQueue.main.async {
                 self?.updateUI(with: weatherData)
@@ -73,9 +76,13 @@ class ViewController: UIViewController {
     }
     
     private func updateUI(with weatherData: Weather) {
+        temp = (weatherData.current.tempCelsius)
+        cityTemp = (weatherData.location.cityName)
         cityNameLabel.text = "\(weatherData.location.cityName)"
         temperatureLabel.text = "\(weatherData.current.tempCelsius) °C"
+        let tempFar = "\(weatherData.current.tempFahrenheit) °F"
         print(weatherData.current.condition.code)
+        print(tempFar)
         
         switch (weatherData.current.condition.code){
             
@@ -151,6 +158,9 @@ class ViewController: UIViewController {
     }
 
 }
+
+
+
 
 class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

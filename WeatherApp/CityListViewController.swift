@@ -16,7 +16,7 @@ class CityListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let item = "London"
+        let item = searchedCityName
       //  self.items.append(item)
         //loadData()
         
@@ -37,9 +37,20 @@ class CityListViewController: UIViewController, UITableViewDelegate, UITableView
         
         var content = cell.defaultContentConfiguration()
         content.text = item
+        content.secondaryText = String(temp)
+        
+        
         cell.contentConfiguration = content
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        var content = items[indexPath.row]
+        
+        print("From cell: ", content)
+        
     }
     
 
