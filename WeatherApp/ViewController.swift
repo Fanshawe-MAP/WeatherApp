@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
+    
+    let locationManager = CLLocationManager()
+    let locationDelegate = MyLocationDelegate()
+
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -30,13 +35,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = locationDelegate
+        locationManager.requestWhenInUseAuthorization()
         // Do any additional setup after loading the view.
         fetchWeatherData(for: "London,On")
         
         searchedCityName = searchField.text
         print(searchedCityName!)
     }
-
+    
+    
+    @IBAction func currentLocation(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
     private func fetchWeatherData(for city: String) {
         networkModel.searchWeather(for: city) { [weak self] weatherData in
             DispatchQueue.main.async {
@@ -123,6 +136,19 @@ class ViewController: UIViewController {
         }
     }
 
+}
 
+class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Got location")
+        if let location = locations.last {
+            print("Latitude: \(location.coordinate.latitude)")
+            print("Longitude: \(location.coordinate.longitude)")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
 
