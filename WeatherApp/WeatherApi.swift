@@ -40,9 +40,10 @@ struct CurrentWeather: Decodable {
 
 struct CurrentCondition: Decodable{
     let code: Int
-    
+    let icon: String
     enum CodingKeys: String, CodingKey{
         case code = "code"
+        case icon = "icon"
     }
 }
 

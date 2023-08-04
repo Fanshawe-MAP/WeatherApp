@@ -8,6 +8,8 @@
 import UIKit
 
 var items:[String] = []
+var content: String = "London,On"
+var viewC = ViewController()
 
 class CityListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,7 +18,7 @@ class CityListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let item = searchedCityName
+        _ = searchedCityName
       //  self.items.append(item)
         //loadData()
         
@@ -46,8 +48,8 @@ class CityListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        var content = items[indexPath.row]
+        _ = tableView.cellForRow(at: indexPath)
+        content = items[indexPath.row]
         
         print("From cell: ", content)
         

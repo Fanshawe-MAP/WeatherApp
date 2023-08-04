@@ -11,6 +11,7 @@ import CoreLocation
 var searchedCityName: String?
 var temp: Double = 0.0
 var cityTemp: String = "London"
+var icon: String = "Link"
 var networkModel = NetworkModel()
 
 class ViewController: UIViewController {
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
             fetchWeatherData(for: searchedCityName)
             searchField.text = ""
             loadData()
+            
         }
         
         
@@ -77,10 +79,10 @@ class ViewController: UIViewController {
     
     private func updateUI(with weatherData: Weather) {
         temp = (weatherData.current.tempCelsius)
-        cityTemp = (weatherData.location.cityName)
         cityNameLabel.text = "\(weatherData.location.cityName)"
         temperatureLabel.text = "\(weatherData.current.tempCelsius) °C"
         let tempFar = "\(weatherData.current.tempFahrenheit) °F"
+        icon = (weatherData.current.condition.icon)
         print(weatherData.current.condition.code)
         print(tempFar)
         
