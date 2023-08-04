@@ -12,12 +12,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     
+    @IBOutlet weak var searchField: UITextField!
+    
+    @IBOutlet weak var searchBtn: UIImageView!
+    
+    @IBOutlet weak var cityListBtn: UIButton!
+    
+    @IBAction func cityBtn(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "goToCityList", sender: self)
+        
+    }
+    
+    private var searchedCityName: String?
     private var networkModel = NetworkModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         fetchWeatherData(for: "London,On")
+        
+        searchedCityName = searchField.text
+        print(searchedCityName!)
     }
 
     private func fetchWeatherData(for city: String) {

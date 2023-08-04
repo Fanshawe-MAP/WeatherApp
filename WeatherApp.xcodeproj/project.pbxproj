@@ -14,6 +14,7 @@
 		2FE8BE912A74229F00E374B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE8BE902A74229F00E374B1 /* Assets.xcassets */; };
 		2FE8BE942A74229F00E374B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE8BE922A74229F00E374B1 /* LaunchScreen.storyboard */; };
 		6C067E612A7D613300250260 /* WeatherApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C067E602A7D613300250260 /* WeatherApi.swift */; };
+		6C067E632A7D6C4500250260 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C067E622A7D6C4500250260 /* CityListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2FE8BE932A74229F00E374B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FE8BE952A74229F00E374B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C067E602A7D613300250260 /* WeatherApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApi.swift; sourceTree = "<group>"; };
+		6C067E622A7D6C4500250260 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				2FE8BE922A74229F00E374B1 /* LaunchScreen.storyboard */,
 				2FE8BE952A74229F00E374B1 /* Info.plist */,
 				6C067E602A7D613300250260 /* WeatherApi.swift */,
+				6C067E622A7D6C4500250260 /* CityListViewController.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				2FE8BE8C2A74229E00E374B1 /* ViewController.swift in Sources */,
 				6C067E612A7D613300250260 /* WeatherApi.swift in Sources */,
 				2FE8BE882A74229E00E374B1 /* AppDelegate.swift in Sources */,
+				6C067E632A7D6C4500250260 /* CityListViewController.swift in Sources */,
 				2FE8BE8A2A74229E00E374B1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
