@@ -17,10 +17,10 @@ var tempC: String?
 var tempF: String?
 var city: String? = nil
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
-    let locationDelegate = MyLocationDelegate()
+   // let locationDelegate = MyLocationDelegate()
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -54,10 +54,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.delegate = locationDelegate
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         // Do any additional setup after loading the view.
-        fetchWeatherData(for: city ?? "London,On")
+        fetchWeatherData(for:"Toronto")
            
     }
     
@@ -78,18 +78,18 @@ class ViewController: UIViewController {
     func fetchWeatherData(for city: String) {
         networkModel.searchWeather(for: city) { [weak self] weatherData in
             DispatchQueue.main.async {
-                self?.updateUI(with: weatherData)
+                self?.updateData(with: weatherData)
             }
         }
     }
     
-    private func updateUI(with weatherData: Weather) {
+    private func updateData(with weatherData: Weather) {
         temp = (weatherData.current.tempCelsius)
         cityNameLabel.text = "\(weatherData.location.cityName)"
         temperatureLabel.text = "\(weatherData.current.tempCelsius) °C"
         
-        tempF = "\(weatherData.current.tempFahrenheit)"
-        tempC = "\(weatherData.current.tempCelsius)"
+        tempF = "\(weatherData.current.tempFahrenheit) °F"
+        tempC = "\(weatherData.current.tempCelsius) °C"
         print(weatherData.current.condition.code)
         
         switch (weatherData.current.condition.code){
@@ -164,12 +164,8 @@ class ViewController: UIViewController {
             weatherConditionLabel.text = "No data available"
         }
     }
-
-}
-
-
-class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         print("Got location")
         if let location = locations.last {
             print("Latitude: \(location.coordinate.latitude)")
@@ -182,6 +178,7 @@ class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
                 if let placemark = placemarks?.first {
                     city = placemark.locality!
                     print("City: \(city ?? "London,On")")
+                    self.fetchWeatherData(for: (city ?? "London,On"))
                 }
             }
         }
@@ -190,4 +187,13 @@ class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+
 }
+
+
+//class MyLocationDelegate: NSObject, CLLocationManagerDelegate {
+//
+//    //var classViewCont = ViewController()
+//
+//
+//}

@@ -48,9 +48,8 @@ class CityListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = tableView.cellForRow(at: indexPath)
-        content = items[indexPath.row]
-        
+        let cell = tableView.cellForRow(at: indexPath)
+        var content = items[indexPath.row]
         print("From cell: ", content)
         
     }
