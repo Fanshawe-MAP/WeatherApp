@@ -117,6 +117,7 @@
                         <outlet property="cityNameLabel" destination="bGO-tr-CgZ" id="0Tb-WX-nya"/>
                         <outlet property="searchField" destination="sPi-Fb-I7o" id="nIh-JE-bCX"/>
                         <outlet property="temperatureLabel" destination="wLV-ox-5PM" id="xWa-IG-1dH"/>
+                        <outlet property="weatherConditionLabel" destination="4ov-qH-PPd" id="R4o-rR-cxh"/>
                         <segue destination="GOW-ZD-Krc" kind="show" identifier="goToCityList" id="dMP-Hc-zKQ"/>
                     </connections>
                 </viewController>
@@ -133,7 +134,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jRd-rh-90J">
-                                <rect key="frame" x="16" y="89" width="361" height="729"/>
+                                <rect key="frame" x="16" y="118" width="361" height="700"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>

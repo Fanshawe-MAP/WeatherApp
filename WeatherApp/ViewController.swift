@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchField: UITextField!
     
     @IBOutlet weak var searchBtn: UIImageView!
+    @IBOutlet weak var weatherConditionLabel: UILabel!
     
     @IBOutlet weak var cityListBtn: UIButton!
     
@@ -48,6 +49,78 @@ class ViewController: UIViewController {
         cityNameLabel.text = "\(weatherData.location.cityName)"
         temperatureLabel.text = "\(weatherData.current.tempCelsius) °C"
         print(weatherData.current.condition.code)
+        
+        switch (weatherData.current.condition.code){
+            
+        case 1000:
+            weatherConditionLabel.text = "Sunny"
+        
+        case 1003:
+            weatherConditionLabel.text = "Partly cloudy"
+            
+        case 1006:
+            weatherConditionLabel.text = "Cloudy"
+            
+        case 1009:
+            weatherConditionLabel.text = "Overcast"
+            
+        case 1030:
+            weatherConditionLabel.text = "Mist"
+            
+        case 1063:
+            weatherConditionLabel.text = "Patchy rain possible"
+            
+        case 1066:
+            weatherConditionLabel.text = "Patchy snow possible"
+            
+        case 1069:
+            weatherConditionLabel.text = "Patchy sleet possible"
+            
+        case 1072:
+            weatherConditionLabel.text = "Patchy freezing drizzle possible"
+            
+        case 1087:
+            weatherConditionLabel.text = "Thundery outbreaks possible"
+            
+        case 1114:
+            weatherConditionLabel.text = "Blowing snow"
+            
+        case 1117:
+            weatherConditionLabel.text = "Blizzard"
+            
+        case 1135:
+            weatherConditionLabel.text = "Fog"
+            
+        case 1147:
+            weatherConditionLabel.text = "Freezing fogny"
+            
+        case 1150:
+            weatherConditionLabel.text = "Patchy light drizzle"
+            
+        case 1153:
+            weatherConditionLabel.text = "Light drizzle"
+            
+        case 1168:
+            weatherConditionLabel.text = "Freezing drizzle"
+            
+        case 1171:
+            weatherConditionLabel.text = "Heavy freezing drizzle"
+            
+        case 1180:
+            weatherConditionLabel.text = "Patchy light rain"
+            
+        case 1183:
+            weatherConditionLabel.text = "Light rain"
+            
+        case 1186:
+            weatherConditionLabel.text = "Moderate rain at times"
+            
+        case 1189:
+            weatherConditionLabel.text = "Moderate rain"
+            
+        default:
+            weatherConditionLabel.text = "No data available"
+        }
     }
 
 
