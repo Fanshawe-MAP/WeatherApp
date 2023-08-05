@@ -19,7 +19,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="C8t-Le-SmW">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="ucu-qa-Sqh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear" translatesAutoresizingMaskIntoConstraints="NO" id="ucu-qa-Sqh">
                                 <rect key="frame" x="111.33333333333333" y="275" width="170.33333333333337" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="LF6-vj-ABh"/>
@@ -104,11 +104,13 @@
                             <constraint firstItem="C8t-Le-SmW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1eL-FW-TDK"/>
                             <constraint firstItem="C8t-Le-SmW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Qx-dX-Jrt"/>
                             <constraint firstItem="sPi-Fb-I7o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-14" id="6Ey-Zo-rmk"/>
+                            <constraint firstItem="p80-C4-DRr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="6VU-Ew-xhk"/>
                             <constraint firstItem="sPi-Fb-I7o" firstAttribute="leading" secondItem="cyL-6E-Yy0" secondAttribute="trailing" constant="8.6699999999999999" id="8AI-qF-1nc"/>
                             <constraint firstItem="p80-C4-DRr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Sr-4W-xv5"/>
                             <constraint firstItem="qWZ-9F-SgN" firstAttribute="top" secondItem="4su-Lt-7Cb" secondAttribute="bottom" constant="1" id="CCh-Gp-p6B"/>
                             <constraint firstItem="p80-C4-DRr" firstAttribute="top" secondItem="cyL-6E-Yy0" secondAttribute="bottom" constant="32.666666666666657" id="Fdr-eg-cn8"/>
                             <constraint firstItem="qWZ-9F-SgN" firstAttribute="leading" secondItem="4su-Lt-7Cb" secondAttribute="leading" id="GvL-lC-hgY"/>
+                            <constraint firstItem="p80-C4-DRr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="HEF-js-Ukf"/>
                             <constraint firstItem="qWZ-9F-SgN" firstAttribute="trailing" secondItem="bGO-tr-CgZ" secondAttribute="trailing" id="K4H-Za-QKS"/>
                             <constraint firstItem="bGO-tr-CgZ" firstAttribute="top" secondItem="qWZ-9F-SgN" secondAttribute="bottom" constant="24" id="KwN-p1-3Wc"/>
                             <constraint firstItem="qWZ-9F-SgN" firstAttribute="trailing" secondItem="4su-Lt-7Cb" secondAttribute="trailing" id="MLi-EN-k1O"/>
@@ -118,6 +120,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wLV-ox-5PM" secondAttribute="trailing" symbolic="YES" id="RjO-rc-dGT"/>
                             <constraint firstItem="bGO-tr-CgZ" firstAttribute="top" secondItem="wLV-ox-5PM" secondAttribute="bottom" constant="43" id="S34-af-EWn"/>
                             <constraint firstItem="AvF-j4-c0p" firstAttribute="centerY" secondItem="cyL-6E-Yy0" secondAttribute="centerY" id="U3U-F2-xrv"/>
+                            <constraint firstItem="p80-C4-DRr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="2" id="YXH-Nf-qU9"/>
                             <constraint firstItem="wLV-ox-5PM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="111" id="ZEE-gT-Zed"/>
                             <constraint firstItem="ucu-qa-Sqh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="111.33333333333334" id="ZJc-fq-YwA"/>
                             <constraint firstItem="sPi-Fb-I7o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zx6-kZ-O5M"/>
@@ -146,8 +149,11 @@
                     <connections>
                         <outlet property="cityNameLabel" destination="bGO-tr-CgZ" id="0Tb-WX-nya"/>
                         <outlet property="searchField" destination="sPi-Fb-I7o" id="nIh-JE-bCX"/>
+                        <outlet property="tempCe" destination="qWZ-9F-SgN" id="i7u-EW-Kov"/>
+                        <outlet property="tempFa" destination="4su-Lt-7Cb" id="wzq-m4-e3Y"/>
                         <outlet property="temperatureLabel" destination="wLV-ox-5PM" id="xWa-IG-1dH"/>
                         <outlet property="weatherConditionLabel" destination="4ov-qH-PPd" id="R4o-rR-cxh"/>
+                        <outlet property="weatherImage" destination="ucu-qa-Sqh" id="hLD-7p-gYr"/>
                         <segue destination="GOW-ZD-Krc" kind="show" identifier="goToCityList" id="dMP-Hc-zKQ"/>
                     </connections>
                 </viewController>
@@ -212,7 +218,7 @@
     </scenes>
     <resources>
         <image name="background" width="213.33332824707031" height="378.66665649414062"/>
-        <image name="cloudy" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="clear" width="170.66667175292969" height="170.66667175292969"/>
         <image name="location.circle.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
